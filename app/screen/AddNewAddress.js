@@ -9,7 +9,7 @@ import {
   TextInput,
   ImageBackground,
   Image,
-  FlatList
+  FlatList,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
@@ -63,7 +63,9 @@ export default function AddNewAddress({navigation}) {
                 marginLeft: 210,
               }}></View>
           </View>
-            <Text style={{color: '#666F76', marginBottom: 22}}>{item.number}</Text>
+          <Text style={{color: '#666F76', marginBottom: 22}}>
+            {item.number}
+          </Text>
           <Text style={{color: '#666F76'}}>
             {`${item.address_line}, ${item.city} \n ${item.state}, ${item.country}`}
           </Text>
@@ -80,21 +82,22 @@ export default function AddNewAddress({navigation}) {
           justifyContent: 'center',
           alignSelf: 'center',
         }}>
-          <FlatList
-            data={addressList}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item, index}) => _renderItem(item)}
-          />
+        <FlatList
+          data={addressList}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item, index}) => _renderItem(item)}
+        />
       </View>
       <TouchableOpacity
-        style={{backgroundColor: '#F97762',
-        width: 345,
-        height: 48,
-        borderRadius: 10,
-        alignSelf: 'center',
-        position: 'absolute',
-        bottom: 30
-      }}
+        style={{
+          backgroundColor: '#F97762',
+          width: 345,
+          height: 48,
+          borderRadius: 10,
+          alignSelf: 'center',
+          position: 'absolute',
+          bottom: 30,
+        }}
         onPress={() => navigation.navigate('ChangePassword')}>
         <Text
           style={{

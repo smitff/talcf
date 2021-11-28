@@ -1,8 +1,18 @@
 import {
-  UPDATE_CACHE, LOADINNG, LOGIN, SIGNUP, FORGOT_PASSWORD, VERIFY_OTP, CREATE_PASSWORD, UPDATE_USER, DASHBOARD,
+  UPDATE_CACHE,
+  LOADINNG,
+  LOGIN,
+  SIGNUP,
+  FORGOT_PASSWORD,
+  VERIFY_OTP,
+  CREATE_PASSWORD,
+  UPDATE_USER,
+  DASHBOARD,
   DASHBOARD_RESPONSE,
-  SESSIONS, SESSIONS_RESPONSE,
-  SESSIONSDETAILS, SESSIONSDETAILS_RESPONSE,
+  SESSIONS,
+  SESSIONS_RESPONSE,
+  SESSIONSDETAILS,
+  SESSIONSDETAILS_RESPONSE,
   NOTIFICATION,
   NOTIFICATION_RESPONSE,
   CHANGE_PASSWORD,
@@ -15,7 +25,7 @@ const initialState = {
   user: {},
   isLoading: true,
   UserId: '',
-  dashboard: null
+  dashboard: null,
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -23,15 +33,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoggedIn: action.payload,
-        isLoading: false
+        isLoading: false,
       };
 
     case LOADINNG:
       return {
         ...state,
-        isLoading: action.payload.status
+        isLoading: action.payload.status,
       };
-
 
     case LOGIN:
       return {
@@ -45,13 +54,11 @@ export default function (state = initialState, action) {
         loading: true,
       };
 
-
     case FORGOT_PASSWORD:
       return {
         ...state,
         loading: true,
       };
-
 
     case VERIFY_OTP:
       return {
@@ -59,66 +66,62 @@ export default function (state = initialState, action) {
         loading: true,
       };
 
-
     case UPDATE_USER:
       return {
         ...state,
         loading: true,
       };
 
-
     case DASHBOARD:
       return {
         ...state,
         loading: true,
-        dashboard: action.data
+        dashboard: action.data,
       };
     case DASHBOARD_RESPONSE:
       return {
         ...state,
         loading: true,
-        dashboard: action.payload
+        dashboard: action.payload,
       };
 
     case SESSIONS:
       return {
         ...state,
         loading: true,
-        sessions: action.data
+        sessions: action.data,
       };
     case SESSIONS_RESPONSE:
       return {
         ...state,
         loading: true,
-        sessions: action.payload
+        sessions: action.payload,
       };
-
 
     case SESSIONSDETAILS:
       return {
         ...state,
         loading: true,
-        sessiondetails: action.data
+        sessiondetails: action.data,
       };
     case SESSIONSDETAILS_RESPONSE:
       return {
         ...state,
         loading: true,
-        sessiondetails: action.payload
+        sessiondetails: action.payload,
       };
-
 
     case NOTIFICATION:
       return {
         ...state,
         loading: true,
-        notification: action.data
+        notification: action.data,
       };
     case NOTIFICATION_RESPONSE:
       return {
         ...state,
         loading: true,
-        notification: action.payload
+        notification: action.payload,
       };
 
     case CREATE_PASSWORD:

@@ -28,16 +28,12 @@ import {
   UPDATE_PROFILE_DETAILS,
   UPDATE_PROFILE_DETAILS_SUCCESS,
   UPDATE_PROFILE_DETAILS_FAILURE,
-
-
   NOTIFICATION_LIST,
   NOTIFICATION_LIST_SUCCESS,
   NOTIFICATION_LIST_FAILURE,
-
   REMOVE_NOTIFICATION,
   REMOVE_NOTIFICATION_SUCCESS,
   REMOVE_NOTIFICATION_FAILURE,
-
   CHANGE_PASSWORD,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAILURE,
@@ -161,7 +157,6 @@ export default function (state = initialState, action) {
         addressListFailure: true,
       };
 
-
     case ADD_NEW_ADDRESS:
       return {
         ...state,
@@ -186,76 +181,76 @@ export default function (state = initialState, action) {
       return {
         ...state,
         getOrderLoader: true,
-        getOrderList: []
+        getOrderList: [],
       };
     case GET_ORDER_SUCCESS:
       return {
         ...state,
         getOrderLoader: false,
-        getOrderList: action.payload && action.payload.payload
+        getOrderList: action.payload && action.payload.payload,
       };
     case GET_ORDER_FAILURE:
       return {
         ...state,
         getOrderLoader: false,
-        getOrderList: []
+        getOrderList: [],
       };
 
     case PLAN_LIST:
       return {
         ...state,
         planListLoader: true,
-        planList: []
+        planList: [],
       };
     case PLAN_LIST_SUCCESS:
       return {
         ...state,
         planListLoader: false,
-        planList: action.payload && action.payload.payload
+        planList: action.payload && action.payload.payload,
       };
     case PLAN_LIST_FAILURE:
       return {
         ...state,
         planListLoader: false,
-        planList: []
+        planList: [],
       };
 
     case PLAN_DETAILS:
       return {
         ...state,
         planDetailsLoader: true,
-        planDetails: {}
+        planDetails: {},
       };
     case PLAN_DETAILS_SUCCESS:
       return {
         ...state,
         planDetailsLoader: false,
-        planDetails: action.payload && action.payload.payload
+        planDetails: action.payload && action.payload.payload,
       };
     case PLAN_DETAILS_FAILURE:
       return {
         ...state,
         planDetailsLoader: false,
-        planDetails: {}
+        planDetails: {},
       };
 
     case PROFILE_DETAILS:
       return {
         ...state,
         profileLoader: true,
-        profileData: {}
+        profileData: {},
       };
     case PROFILE_DETAILS_SUCCESS:
       return {
         ...state,
         profileLoader: false,
-        profileData: action.payload && action.payload.payload
+        profileData: action.payload && action.payload.payload,
       };
     case PROFILE_DETAILS_FAILURE:
       return {
         ...state,
         profileLoader: false,
-        profileData: {}
+        profileData: {},
       };
 
     case UPDATE_PROFILE_DETAILS:
@@ -263,21 +258,21 @@ export default function (state = initialState, action) {
         ...state,
         updateProfileLoader: true,
         updateProfileSuccess: false,
-        updateProfileFailure: false
+        updateProfileFailure: false,
       };
     case UPDATE_PROFILE_DETAILS_SUCCESS:
       return {
         ...state,
         updateProfileLoader: false,
         updateProfileSuccess: true,
-        updateProfileFailure: false
+        updateProfileFailure: false,
       };
     case UPDATE_PROFILE_DETAILS_FAILURE:
       return {
         ...state,
         updateProfileLoader: false,
         updateProfileSuccess: false,
-        updateProfileFailure: true
+        updateProfileFailure: true,
       };
 
     case NOTIFICATION_LIST:
@@ -286,7 +281,7 @@ export default function (state = initialState, action) {
         notificationList: [],
         notificationLoader: true,
         notificationListSuccess: false,
-        notificationListFailure: false
+        notificationListFailure: false,
       };
     case NOTIFICATION_LIST_SUCCESS:
       return {
@@ -294,7 +289,7 @@ export default function (state = initialState, action) {
         notificationList: action.payload && action.payload.payload,
         notificationLoader: false,
         notificationListSuccess: true,
-        notificationListFailure: false
+        notificationListFailure: false,
       };
     case NOTIFICATION_LIST_FAILURE:
       return {
@@ -302,7 +297,7 @@ export default function (state = initialState, action) {
         notificationList: [],
         notificationLoader: false,
         notificationListSuccess: false,
-        notificationListFailure: true
+        notificationListFailure: true,
       };
 
     case REMOVE_NOTIFICATION:
@@ -311,7 +306,7 @@ export default function (state = initialState, action) {
         removeNotification: {},
         removeNotificationLoader: true,
         removeNotificationSuccess: false,
-        removeNotificationFailure: false
+        removeNotificationFailure: false,
       };
     case REMOVE_NOTIFICATION_SUCCESS:
       return {
@@ -319,7 +314,7 @@ export default function (state = initialState, action) {
         removeNotification: {},
         removeNotificationLoader: false,
         removeNotificationSuccess: true,
-        removeNotificationFailure: false
+        removeNotificationFailure: false,
       };
     case REMOVE_NOTIFICATION_FAILURE:
       return {
@@ -327,16 +322,16 @@ export default function (state = initialState, action) {
         removeNotification: {},
         removeNotificationLoader: false,
         removeNotificationSuccess: false,
-        removeNotificationFailure: true
+        removeNotificationFailure: true,
       };
 
-      case CHANGE_PASSWORD:
+    case CHANGE_PASSWORD:
       return {
         ...state,
         changePassword: {},
         changePasswordLoader: true,
         changePasswordSuccess: false,
-        changePasswordFailure: false
+        changePasswordFailure: false,
       };
     case CHANGE_PASSWORD_SUCCESS:
       return {
@@ -344,14 +339,14 @@ export default function (state = initialState, action) {
         changePassword: {},
         changePasswordLoader: false,
         changePasswordSuccess: true,
-        changePasswordFailure: false
+        changePasswordFailure: false,
       };
     case CHANGE_PASSWORD_FAILURE:
       return {
         changePassword: {},
         changePasswordLoader: false,
         changePasswordSuccess: false,
-        changePasswordFailure: true
+        changePasswordFailure: true,
       };
     default:
       return state;

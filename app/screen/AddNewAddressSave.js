@@ -1,5 +1,5 @@
-import React, { useEffect, Component, useState } from 'react';
-import { RadioButton, CheckBox } from 'react-native-paper';
+import React, {useEffect, Component, useState} from 'react';
+import {RadioButton, CheckBox} from 'react-native-paper';
 
 import {
   StyleSheet,
@@ -14,39 +14,35 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '../redux/action/actions';
 
-export default function AddNewAddressSave({ navigation }) {
-
+export default function AddNewAddressSave({navigation}) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('DElhi');
   const [items, setItems] = useState([
-    { label: 'Alabama', value: 'Alabama' },
-    { label: 'Alaska', value: 'Alaska' },
-    { label: 'Arizona', value: 'Arizona' },
-    { label: 'BANGALORE', value: 'BANGALORE' },
-    { label: 'HYDERABAD', value: 'HYDERABAD' },
+    {label: 'Alabama', value: 'Alabama'},
+    {label: 'Alaska', value: 'Alaska'},
+    {label: 'Arizona', value: 'Arizona'},
+    {label: 'BANGALORE', value: 'BANGALORE'},
+    {label: 'HYDERABAD', value: 'HYDERABAD'},
   ]);
 
   const [open2, setOpen2] = useState(false);
   const [items2, setItems2] = useState([
     // { label: 'INDIA', value: 'INDIA' },
-    { label: 'US', value: 'US' },
+    {label: 'US', value: 'US'},
   ]);
   const [value2, setValue2] = useState('INDIA');
-
 
   const [open3, setOpen3] = useState(false);
   const [items3, setItems3] = useState([
     // { label: 'UP', value: 'Up' },
     // { label: 'UK', value: 'Uk' },
-    { label: 'New York', value: 'New York' },
+    {label: 'New York', value: 'New York'},
     // { label: 'Bihar', value: 'Bihar' },
   ]);
   const [value3, setValue3] = useState('UP');
-
-
 
   const [button1, setButton1] = useState('Gender');
   const [email, setEmail] = useState('');
@@ -59,9 +55,8 @@ export default function AddNewAddressSave({ navigation }) {
   const [state, setState] = React.useState('');
   const [country, setCountry] = React.useState('');
 
-  const [addressSaved, setAddressSaved] = useState(false)
-  const [isFirstTime, setIsFirstTime] = useState(true)
-
+  const [addressSaved, setAddressSaved] = useState(false);
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -69,35 +64,35 @@ export default function AddNewAddressSave({ navigation }) {
   //   setIsFirstTime(false)
   // },[])
 
-  const { addNewAddressSuccess } = useSelector(state => ({
+  const {addNewAddressSuccess} = useSelector(state => ({
     addNewAddressSuccess: state.dashboardReducer.addNewAddressSuccess,
   }));
 
   useEffect(() => {
-    setIsFirstTime(false)
+    setIsFirstTime(false);
     if (!isFirstTime) {
-      setAddressSaved(true)
+      setAddressSaved(true);
       Alert.alert(
-        "Address Saved Successfully",
+        'Address Saved Successfully',
         [
           {
-            text: "OK",
+            text: 'OK',
             onPress: () => {
-              setAddressSaved(false)
-              navigation.goBack()
+              setAddressSaved(false);
+              navigation.goBack();
             },
-            style: "cancel",
+            style: 'cancel',
           },
         ],
         {
           cancelable: true,
-        }
+        },
       );
     }
   }, [addNewAddressSuccess]);
 
   const saveAddress = () => {
-    setAddressSaved(false)
+    setAddressSaved(false);
     let ob = {
       user_id: 39,
       name: name,
@@ -106,16 +101,14 @@ export default function AddNewAddressSave({ navigation }) {
       city: value,
       state: value3,
       country: value2,
-      mobile: 'mobile'
-    }
+      mobile: 'mobile',
+    };
     dispatch(actions.addNewAddress(ob));
-  }
+  };
 
   return (
-
-
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <View style={{ paddingHorizontal:20 }}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <View style={{paddingHorizontal: 20}}>
         <Text
           style={{
             fontSize: 14,
@@ -127,17 +120,13 @@ export default function AddNewAddressSave({ navigation }) {
         </Text>
         <View
           style={{
-            width: "100%",
+            width: '100%',
             height: 48,
             borderRadius: 10,
             backgroundColor: '#F2F4F7',
-            justifyContent: "center"
+            justifyContent: 'center',
           }}>
-          <TextInput
-            onChangeText={setName}
-            value={name}
-            placeholder=""
-          />
+          <TextInput onChangeText={setName} value={name} placeholder="" />
         </View>
         <Text
           style={{
@@ -150,18 +139,13 @@ export default function AddNewAddressSave({ navigation }) {
         </Text>
         <View
           style={{
-            width: "100%",
+            width: '100%',
             height: 48,
             borderRadius: 10,
             backgroundColor: '#F2F4F7',
-            justifyContent: "center"
-
+            justifyContent: 'center',
           }}>
-          <TextInput
-            onChangeText={setMobile}
-            value={mobile}
-            placeholder=""
-          />
+          <TextInput onChangeText={setMobile} value={mobile} placeholder="" />
         </View>
         <Text
           style={{
@@ -174,18 +158,13 @@ export default function AddNewAddressSave({ navigation }) {
         </Text>
         <View
           style={{
-            width: "100%",
+            width: '100%',
             height: 48,
             borderRadius: 10,
             backgroundColor: '#F2F4F7',
-            justifyContent: "center"
-
+            justifyContent: 'center',
           }}>
-          <TextInput
-            onChangeText={setPinCode}
-            value={pincode}
-            placeholder=""
-          />
+          <TextInput onChangeText={setPinCode} value={pincode} placeholder="" />
         </View>
         <Text
           style={{
@@ -198,18 +177,13 @@ export default function AddNewAddressSave({ navigation }) {
         </Text>
         <View
           style={{
-            width: "100%",
+            width: '100%',
             height: 48,
             borderRadius: 10,
             backgroundColor: '#F2F4F7',
-            justifyContent: "center"
-
+            justifyContent: 'center',
           }}>
-          <TextInput
-            onChangeText={setAddress}
-            value={address}
-            placeholder=""
-          />
+          <TextInput onChangeText={setAddress} value={address} placeholder="" />
         </View>
       </View>
 
@@ -219,7 +193,7 @@ export default function AddNewAddressSave({ navigation }) {
           color: '#666F76',
           marginTop: 10,
           marginBottom: 10,
-          marginLeft: 20
+          marginLeft: 20,
         }}>
         City
       </Text>
@@ -228,13 +202,18 @@ export default function AddNewAddressSave({ navigation }) {
             flexDirection: "row", marginBottom: 30, justifyContent: "space-between", alignSelf: "center",
             paddingHorizontal: 10, marginTop: 15, paddingTop: 10,
           }}> */}
-      <DropDownPicker style={{
-        borderRadius: 10, width: "100%",
-        height: 48, borderWidth: 1, borderColor: "#F2F4F7", backgroundColor: "#F2F4F7",
-      }}
+      <DropDownPicker
+        style={{
+          borderRadius: 10,
+          width: '100%',
+          height: 48,
+          borderWidth: 1,
+          borderColor: '#F2F4F7',
+          backgroundColor: '#F2F4F7',
+        }}
         textStyle={{
           fontSize: 12,
-          textAlign: 'center'
+          textAlign: 'center',
         }}
         zIndex={999}
         containerStyle={{
@@ -243,7 +222,7 @@ export default function AddNewAddressSave({ navigation }) {
         }}
         dropDownStyle={{
           height: 10,
-          width: 100
+          width: 100,
         }}
         dropDownMaxHeight={10}
         showTickIcon={false}
@@ -262,17 +241,21 @@ export default function AddNewAddressSave({ navigation }) {
           color: '#666F76',
           marginTop: 10,
           marginBottom: 10,
-          marginLeft: 20
+          marginLeft: 20,
         }}>
         State
       </Text>
-      <DropDownPicker style={{
-        backgroundColor: "#F2F4F7", borderWidth: 0, borderRadius: 10, width: "100%",
-        height: 48,
-      }}
+      <DropDownPicker
+        style={{
+          backgroundColor: '#F2F4F7',
+          borderWidth: 0,
+          borderRadius: 10,
+          width: '100%',
+          height: 48,
+        }}
         textStyle={{
           fontSize: 10,
-          textAlign: 'center'
+          textAlign: 'center',
         }}
         zIndex={998}
         containerStyle={{
@@ -281,7 +264,7 @@ export default function AddNewAddressSave({ navigation }) {
         }}
         dropDownStyle={{
           width: 50,
-          height: 10
+          height: 10,
         }}
         dropDownMaxHeight={10}
         showTickIcon={false}
@@ -300,17 +283,21 @@ export default function AddNewAddressSave({ navigation }) {
           color: '#666F76',
           marginTop: 10,
           marginBottom: 10,
-          marginLeft: 20
+          marginLeft: 20,
         }}>
         Country
       </Text>
-      <DropDownPicker style={{
-        backgroundColor: "#F2F4F7", borderWidth: 0, borderRadius: 10, width: "100%",
-        height: 48,
-      }}
+      <DropDownPicker
+        style={{
+          backgroundColor: '#F2F4F7',
+          borderWidth: 0,
+          borderRadius: 10,
+          width: '100%',
+          height: 48,
+        }}
         textStyle={{
           fontSize: 10,
-          textAlign: 'center'
+          textAlign: 'center',
         }}
         zIndex={997}
         containerStyle={{
@@ -318,7 +305,7 @@ export default function AddNewAddressSave({ navigation }) {
           marginLeft: 20,
         }}
         dropDownStyle={{
-          height: 10
+          height: 10,
         }}
         dropDownMaxHeight={10}
         showTickIcon={false}
@@ -341,31 +328,33 @@ export default function AddNewAddressSave({ navigation }) {
           alignSelf: 'center',
           backgroundColor: '#F5F5F5',
           height: 50,
-          width: "100%"
+          width: '100%',
         }}></View>
       <View
         style={{
           height: 90,
-          width: "100%",
+          width: '100%',
 
           backgroundColor: '#FFFFFF',
           padding: 20,
-          position: "absolute",
+          position: 'absolute',
           bottom: 10,
         }}>
         <View
-          style={{ height: 50, width: "100%", backgroundColor: "#F97762", borderRadius: 10, justifyContent: "center", alignItems: "center" }}>
+          style={{
+            height: 50,
+            width: '100%',
+            backgroundColor: '#F97762',
+            borderRadius: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <TouchableOpacity onPress={() => saveAddress()}>
-            <Text
-              style={{ color: 'white',fontSize:15, }}>
-              Save
-            </Text>
+            <Text style={{color: 'white', fontSize: 15}}>Save</Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
-
-
   );
 }
 

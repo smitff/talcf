@@ -10,23 +10,19 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
-import { SafeAreaView } from 'react-native';
+import {color} from 'react-native-reanimated';
+import {SafeAreaView} from 'react-native';
 
 export default function Tutorial3({navigation}) {
   const [text, onChangeText] = React.useState(null);
   const [checked, setChecked] = React.useState('first');
 
   return (
-    
     <ImageBackground
       source={require('../image/background.png')}
       style={{flex: 1, justifyContent: 'center', backgroundColor: '#612C58'}}>
       <>
-      
-      
-      
-        <View style={{flex: 1,marginTop:70,marginHorizontal:20}}>
+        <View style={{flex: 1, marginTop: 70, marginHorizontal: 20}}>
           <Image
             source={require('../image/yes.png')}
             style={{
@@ -58,9 +54,16 @@ export default function Tutorial3({navigation}) {
             since.
           </Text>
 
-
-          <View style={{flexDirection: 'row', justifyContent:"space-between", alignItems:"center", position:'absolute', bottom: 60, width:"100%", }}>
-            <View style={{flexDirection: 'row', }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              position: 'absolute',
+              bottom: 60,
+              width: '100%',
+            }}>
+            <View style={{flexDirection: 'row'}}>
               <Image
                 source={require('../image/live2.png')}
                 style={{width: 10, height: 10, marginLeft: 10}}
@@ -74,20 +77,19 @@ export default function Tutorial3({navigation}) {
                 style={{width: 10, height: 10, marginLeft: 10}}
               />
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}
-                style={{
-                  width: 80,
-                  height: 40,
-                  backgroundColor: '#F97762',
-                  justifyContent:'center',
-                  alignItems:'center',
-                  borderRadius: 10,
-              
-                }}>
-                <Text style={{color:'white',}}>Next</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Login')}
+              style={{
+                width: 80,
+                height: 40,
+                backgroundColor: '#F97762',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 10,
+              }}>
+              <Text style={{color: 'white'}}>Next</Text>
             </TouchableOpacity>
           </View>
-         
         </View>
       </>
     </ImageBackground>

@@ -11,22 +11,21 @@ import {
   ScrollView,
   Alert,
   TouchableWithoutFeedback,
-} from 'react-native';     
+} from 'react-native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {launchImageLibrary, launchCamera,} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import {request, check, PERMISSIONS, RESULTS} from 'react-native-permissions';
-import { useDispatch, useSelector } from 'react-redux';
-import AntDesignIcon from "react-native-vector-icons/AntDesign"
+import {useDispatch, useSelector} from 'react-redux';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import moment from 'moment'
+import moment from 'moment';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as actions from '../redux/action/actions';
 export default function EditProfile({navigation}) {
-
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [date, setDate] = useState('MM/DD/YYYY');
 
@@ -39,27 +38,27 @@ export default function EditProfile({navigation}) {
     toggleDatePicker();
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [text, onChangeText] = useState(null);
   const [imageSource, setImageSource] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  const [name, setName] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [email, setEmail] = useState('')
-  const [dob, setDOB] = useState('')
-  const [maleSelected, setMaleSelected] = useState(true)
-  
-  const { profileData } = useSelector((state) => ({
-    profileData: state.dashboardReducer.profileData
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [dob, setDOB] = useState('');
+  const [maleSelected, setMaleSelected] = useState(true);
+
+  const {profileData} = useSelector(state => ({
+    profileData: state.dashboardReducer.profileData,
   }));
 
   useEffect(() => {
-    setName(profileData?.name)
-    setEmail(profileData?.email)
-    setMobile(profileData?.mobile)
-    setDOB(profileData?.dob)
-  }, [profileData])
+    setName(profileData?.name);
+    setEmail(profileData?.email);
+    setMobile(profileData?.mobile);
+    setDOB(profileData?.dob);
+  }, [profileData]);
 
   useEffect(async () => {
     const img = await AsyncStorage.getItem('profileImage');
@@ -88,7 +87,7 @@ export default function EditProfile({navigation}) {
     //   if (response.didCancel) {
     //     console.log('User cancelled photo picker');
     //     Alert.alert('You did not select any image');
-    //   } else if (response.error) { 
+    //   } else if (response.error) {
     //     console.log('ImagePicker Error: ', response.error);
     //   } else if (response.customButton) {
     //     console.log('User tapped custom button: ', response.customButton);
@@ -113,11 +112,11 @@ export default function EditProfile({navigation}) {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
-      cropping: true
+      cropping: true,
     }).then(image => {
-        setImageSource(image.path);
-        AsyncStorage.setItem('profileImage', image.path);
-        setShowPopup(false);
+      setImageSource(image.path);
+      AsyncStorage.setItem('profileImage', image.path);
+      setShowPopup(false);
     });
   };
 
@@ -186,21 +185,23 @@ export default function EditProfile({navigation}) {
   );
 
   const saveProfileData = () => {
-    dispatch(actions.saveUserProfile({
-      user_id:55,
-      name: name,
-      mobile: mobile,
-      dob: dob,
-      gender: 'male'
-    }));
-  }
+    dispatch(
+      actions.saveUserProfile({
+        user_id: 55,
+        name: name,
+        mobile: mobile,
+        dob: dob,
+        gender: 'male',
+      }),
+    );
+  };
 
   return (
     <ScrollView>
       <>
         {showPopup && showSelectionPopup()}
         <SafeAreaView
-          style={{flex: 1, backgroundColor: '#fff', justifyContent: 'center',}}>
+          style={{flex: 1, backgroundColor: '#fff', justifyContent: 'center'}}>
           <View style={{}}>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -230,160 +231,159 @@ export default function EditProfile({navigation}) {
             </View>
             <View
               style={{
-                width: "100%",
+                width: '100%',
                 height: 1,
                 backgroundColor: '#cbd2d9',
                 marginTop: 20,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}></View>
-              <View style={{paddingHorizontal:20}}>
-            <TouchableOpacity
-              style={{alignSelf: 'center', marginTop: 20}}
-              // onPress={() => setShowPopup(true)}
-              onPress={() => openCamera()}
-              >
-              <Image
-                source={{uri: imageSource}}
+            <View style={{paddingHorizontal: 20}}>
+              <TouchableOpacity
+                style={{alignSelf: 'center', marginTop: 20}}
+                // onPress={() => setShowPopup(true)}
+                onPress={() => openCamera()}>
+                <Image
+                  source={{uri: imageSource}}
+                  style={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: 40,
+                    backgroundColor: 'grey',
+                  }}
+                />
+              </TouchableOpacity>
+
+              <Text
                 style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: 40,
-                  backgroundColor: 'grey',
-                }}
-              />
-            </TouchableOpacity>
-
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#666F76',
-                marginTop: 20,
-                // marginBottom: 20,
-              }}>
-              Name
-            </Text>
-            <View
-              style={{
-                width: "100%",
-                height: 48,
-                borderRadius: 10,
-                backgroundColor: '#F2F4F7',
-                justifyContent: 'center',
-                marginTop:12
-              }}>
-              <TextInput
-                style={{marginLeft:10}}
-                onChangeText={setName}
-                value={name}
-                placeholder=""
-              />
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#666F76',
-                marginTop: 12,
-                // marginBottom: 20,
-              }}>
-              Mobile
-            </Text>
-            <View
-              style={{
-                width: "100%",
-                height: 48,
-                borderRadius: 10,
-                backgroundColor: '#F2F4F7',
-                justifyContent: 'center',
-                marginTop: 12,
-
-              }}>
-              <TextInput
-                style={{marginLeft:10}}
-                onChangeText={setMobile}
-                value={mobile}
-                placeholder=""
-              />
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#666F76',
-                marginTop: 12,
-                // marginBottom: 20,
-              }}>
-              Email
-            </Text>
-            <View
-              style={{
-                width: "100%",
-                height: 48,
-                borderRadius: 10,
-                backgroundColor: '#F2F4F7',
-                justifyContent: 'center',
-                marginTop: 12,
-
-              }}>
-              <TextInput
-                style={{marginLeft:10}}
-                onChangeText={setEmail}
-                value={email}
-                placeholder=""
-              />
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#666F76',
-                marginTop: 15,
-                marginBottom: 20,
-              }}>
-              Date of birth
-            </Text>
-
-
-            <TouchableWithoutFeedback onPress={toggleDatePicker}>
-              <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#F2F4F7",}}>
-                <View
-                  style={[
-                    {
-                      height: 30,
-                      // justifyContent: 'flex-start',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      // marginTop: 10,
-                      // marginLeft: -20
-                        alignItems:"center"
-                    },
-                  ]}>
-                  <TextInput
-                    onChangeText={(e) => setdob(e)}
-                    value={dob}
-                    placeholder=""
-                  />
-                  <Text
-                    style={{
-                      fontSize: 15,
-                    
-                      // fontFamily: 'Montserrat-SemiBold',
-                      color: '#999999',
-
-                    }}>
-                    {date}
-                  </Text>
-                  <AntDesignIcon
-                    name="calendar"
-                    style={{ position: "absolute", right: 5, }}
-                    size={20}
-                    color="#999999"
-                  />
-                </View>
+                  fontSize: 14,
+                  color: '#666F76',
+                  marginTop: 20,
+                  // marginBottom: 20,
+                }}>
+                Name
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#F2F4F7',
+                  justifyContent: 'center',
+                  marginTop: 12,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={setName}
+                  value={name}
+                  placeholder=""
+                />
               </View>
-            </TouchableWithoutFeedback>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#666F76',
+                  marginTop: 12,
+                  // marginBottom: 20,
+                }}>
+                Mobile
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#F2F4F7',
+                  justifyContent: 'center',
+                  marginTop: 12,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={setMobile}
+                  value={mobile}
+                  placeholder=""
+                />
+              </View>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#666F76',
+                  marginTop: 12,
+                  // marginBottom: 20,
+                }}>
+                Email
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#F2F4F7',
+                  justifyContent: 'center',
+                  marginTop: 12,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={setEmail}
+                  value={email}
+                  placeholder=""
+                />
+              </View>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#666F76',
+                  marginTop: 15,
+                  marginBottom: 20,
+                }}>
+                Date of birth
+              </Text>
 
+              <TouchableWithoutFeedback onPress={toggleDatePicker}>
+                <View
+                  style={{
+                    width: '100%',
+                    height: 48,
+                    borderRadius: 10,
+                    backgroundColor: '#F2F4F7',
+                  }}>
+                  <View
+                    style={[
+                      {
+                        height: 30,
+                        // justifyContent: 'flex-start',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        // marginTop: 10,
+                        // marginLeft: -20
+                        alignItems: 'center',
+                      },
+                    ]}>
+                    <TextInput
+                      onChangeText={e => setdob(e)}
+                      value={dob}
+                      placeholder=""
+                    />
+                    <Text
+                      style={{
+                        fontSize: 15,
 
+                        // fontFamily: 'Montserrat-SemiBold',
+                        color: '#999999',
+                      }}>
+                      {date}
+                    </Text>
+                    <AntDesignIcon
+                      name="calendar"
+                      style={{position: 'absolute', right: 5}}
+                      size={20}
+                      color="#999999"
+                    />
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
 
-            {/* <View
+              {/* <View
               style={{
                 width: "100%",
                 height: 48,
@@ -398,7 +398,7 @@ export default function EditProfile({navigation}) {
                 placeholder=""
               />
             </View> */}
-          </View>
+            </View>
           </View>
           <Text
             style={{
@@ -410,82 +410,85 @@ export default function EditProfile({navigation}) {
             }}>
             Gender
           </Text>
-          <View style={{paddingHorizontal:20}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignSelf: 'center',
-            }}>
+          <View style={{paddingHorizontal: 20}}>
             <View
               style={{
-                width: 100,
-                height: 100,
-                borderRadius: 90,
-                borderWidth: maleSelected ? 2: 0.8,
-                borderColor: maleSelected ? '#F97762' : '#F5F5F5',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignSelf: 'center',
               }}>
-              <TouchableOpacity
-                onPress={()=> setMaleSelected(true)}>
-                <Image
-                  source={require('../image/male.png')}
-                  style={{width: 92, height: 92, marginTop: 4}}
-                />
-              </TouchableOpacity>
+              <View
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 90,
+                  borderWidth: maleSelected ? 2 : 0.8,
+                  borderColor: maleSelected ? '#F97762' : '#F5F5F5',
+                }}>
+                <TouchableOpacity onPress={() => setMaleSelected(true)}>
+                  <Image
+                    source={require('../image/male.png')}
+                    style={{width: 92, height: 92, marginTop: 4}}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 90,
+                  borderWidth: maleSelected ? 0.8 : 2,
+                  borderColor: maleSelected ? '#F5F5F5' : '#F97762',
+                  marginLeft: 20,
+                }}>
+                <TouchableOpacity onPress={() => setMaleSelected(false)}>
+                  <Image
+                    source={require('../image/female.png')}
+                    style={{width: 93, height: 92, marginTop: 4}}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={{flexDirection: 'row', marginTop: 10}}>
+              <Text
+                style={{
+                  color: maleSelected ? '#F97762' : '#17212A',
+                  marginLeft: 100,
+                }}>
+                Male
+              </Text>
+              <Text
+                style={{
+                  color: maleSelected ? '#17212A' : '#F97762',
+                  marginLeft: 80,
+                }}>
+                Female
+              </Text>
             </View>
             <View
               style={{
-                width: 100,
-                height: 100,
-                borderRadius: 90,
-                borderWidth: maleSelected ? 0.8:2,
-                borderColor: maleSelected ? '#F5F5F5' : '#F97762',
-                marginLeft: 20,
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 25,
+                justifyContent: 'center',
+                alignSelf: 'center',
               }}>
               <TouchableOpacity
-                onPress={()=> setMaleSelected(false)}>
-                <Image
-                  source={require('../image/female.png')}
-                  style={{width: 93, height: 92, marginTop: 4}}
-                />
+                activeOpacity={0.6}
+                onPress={() => saveProfileData()}
+                style={{
+                  backgroundColor: '#F97762',
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text style={{color: 'white'}}>Save Changes</Text>
               </TouchableOpacity>
             </View>
           </View>
-          
-          <View style={{flexDirection: 'row', marginTop: 10}}>
-            <Text style={{color: maleSelected ? '#F97762' : '#17212A', marginLeft: 100}}>Male</Text>
-            <Text style={{color: maleSelected ?  '#17212A': '#F97762', marginLeft: 80}}>Female</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: 25,
-              justifyContent: 'center',
-              alignSelf: 'center',
-            }}>
-              
-              <TouchableOpacity 
-              activeOpacity={0.6}
-              onPress={() => saveProfileData()}
-              style={{
-                backgroundColor: '#F97762',
-                width: "100%",
-                height: 48,
-                borderRadius: 10,
-                justifyContent:"center",
-                alignItems:"center"
-              }}>
-            
-                <Text
-                  style={{color: 'white', }}>
-                  Save Changes
-                </Text>
-              </TouchableOpacity>
-          
-            </View>
-            </View>
-        
         </SafeAreaView>
       </>
       <DateTimePickerModal
@@ -496,7 +499,6 @@ export default function EditProfile({navigation}) {
         maximumDate={new Date()}
       />
     </ScrollView>
-    
   );
 }
 
@@ -506,5 +508,3 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-

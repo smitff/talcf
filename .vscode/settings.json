@@ -1,0 +1,14 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "gitlens.views.searchAndCompare.pullRequests.enabled": false,
+  "editor.formatOnSave": true,
+  "gitlens.views.searchAndCompare.files.compact": false,
+  "gitlens.views.searchAndCompare.avatars": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
