@@ -12,7 +12,6 @@ const HomeStack = () => {
         name="Dashboard"
         options={{headerShown: false}}
         component={Dashboard}
-    
       />
     </Stack.Navigator>
   );

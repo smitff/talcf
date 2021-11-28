@@ -28,7 +28,6 @@ export default function ChooseAddAddress({navigation}) {
   }));
 
   useEffect(() => {
-    
     console.log('Store -> addressList', addressList);
   }, [addressList]);
 
@@ -37,11 +36,11 @@ export default function ChooseAddAddress({navigation}) {
     return (
       <View
         style={{
-          width: "100%",
+          width: '100%',
           height: 128,
           backgroundColor: '#FFF',
           borderRadius: 10,
-          padding:10,
+          padding: 10,
           marginTop: index !== 0 ? 20 : 0,
         }}>
         <View style={{marginLeft: 15}}>
@@ -55,19 +54,20 @@ export default function ChooseAddAddress({navigation}) {
               {item.name}
             </Text>
             <TouchableOpacity
-            onPress={()=>navigation.navigate('Payment', { abc: item })}
+              onPress={() => navigation.navigate('Payment', {abc: item})}
               style={{
                 width: 18,
                 height: 18,
                 borderColor: '#F97762',
                 borderRadius: 10,
                 borderWidth: 3,
-                position:"absolute",
-                right:5
-                
+                position: 'absolute',
+                right: 5,
               }}></TouchableOpacity>
           </View>
-            <Text style={{color: '#666F76', marginBottom: 22}}>{item.number}</Text>
+          <Text style={{color: '#666F76', marginBottom: 22}}>
+            {item.number}
+          </Text>
           <Text style={{color: '#666F76'}}>
             {`${item.address_line}, ${item.city} \n ${item.state}, ${item.country}`}
           </Text>
@@ -80,40 +80,38 @@ export default function ChooseAddAddress({navigation}) {
     <View style={{flex: 1}}>
       <View
         style={{
-          flex:1,
+          flex: 1,
           backgroundColor: '#F5F5F5',
-          padding:20,
+          padding: 20,
         }}>
-          <FlatList
-            data={addressList}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item, index}) => _renderItem(item)}
-          />
+        <FlatList
+          data={addressList}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item, index}) => _renderItem(item)}
+        />
       </View>
-      <View 
-      style={{height:90,width:"100%",backgroundColor:"#FFFFFF",}}>
-      <TouchableOpacity
-        style={{backgroundColor: '#F97762',
-        width: "90%%",
-        height: 48,
-        borderRadius: 10,
-        alignSelf: 'center',
-        position: 'absolute',
-        bottom: 30,
-        
-        
-      }}
-        onPress={() => navigation.navigate('AddNewAddressSave')}>
-        <Text
+      <View style={{height: 90, width: '100%', backgroundColor: '#FFFFFF'}}>
+        <TouchableOpacity
           style={{
-            color: 'white',
-            textAlign: 'center',
-            marginTop: 12,
-            fontSize: 14,
-          }}>
-          Add New Address
-        </Text>
-      </TouchableOpacity>
+            backgroundColor: '#F97762',
+            width: '90%%',
+            height: 48,
+            borderRadius: 10,
+            alignSelf: 'center',
+            position: 'absolute',
+            bottom: 30,
+          }}
+          onPress={() => navigation.navigate('AddNewAddressSave')}>
+          <Text
+            style={{
+              color: 'white',
+              textAlign: 'center',
+              marginTop: 12,
+              fontSize: 14,
+            }}>
+            Add New Address
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

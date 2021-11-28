@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MyAccount from '../screen/MyAccount';
 import FindStack from '../screen/FindStack';
-import Sessions from '../screen/Sessions'
+import Sessions from '../screen/Sessions';
 
 const Stack = createStackNavigator();
 

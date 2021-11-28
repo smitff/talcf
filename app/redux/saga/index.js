@@ -28,7 +28,7 @@ import {
   fetchProfileApiWatcher,
   updateProfileApiWatcher,
   notificationListApiWatcher,
-  removeNotificationApiWatcher
+  removeNotificationApiWatcher,
 } from './dashboardSaga';
 import {getDriverShipmentsWatcher} from './driverSaga';
 
@@ -60,7 +60,6 @@ export default function* rootSaga() {
     updateProfileApiWatcher(),
     notificationListApiWatcher(),
     removeNotificationApiWatcher(),
-    changePasswordWatcher()
-
+    changePasswordWatcher(),
   ]);
 }

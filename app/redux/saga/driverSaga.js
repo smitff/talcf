@@ -11,19 +11,19 @@ import {
   CHECK_LOGIN,
   RESET_PASSWORD,
   CHANGE_PASSWORD,
-  UPDATE_IMAGES
+  UPDATE_IMAGES,
 } from '../action/actionTypes';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-community/async-storage';
 import {ToastAndroid} from 'react-native';
 import {GET_DRIVER_SHIPMENTS_REQ} from '../action/driver/types';
 
-const getDriverShipmentsAPI = (body) => {
+const getDriverShipmentsAPI = body => {
   return fetch(`${URL}driver/get-shipment`, {
     method: 'POST',
     headers: HEADER,
-    body
-  }).then((response) => response.json());
+    body,
+  }).then(response => response.json());
 };
 
 export function* getDriverShipmentWorker(action) {

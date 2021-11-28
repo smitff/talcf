@@ -1,5 +1,5 @@
-import React, { useEffect, Component, useState } from 'react';
-import { RadioButton, CheckBox } from 'react-native-paper';
+import React, {useEffect, Component, useState} from 'react';
+import {RadioButton, CheckBox} from 'react-native-paper';
 
 import {
   StyleSheet,
@@ -9,139 +9,173 @@ import {
   TextInput,
   ImageBackground,
   Image,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import * as actions from '../redux/action/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-
-export default function Signup({ navigation }) {
-  const [name, setname] = React.useState("");
-  const [email, setemail] = React.useState("");
-  const [password, setpassword] = React.useState("");
-  const [ConfirmPassword, setConfirmPassword] = React.useState("");
+export default function Signup({navigation}) {
+  const [name, setname] = React.useState('');
+  const [email, setemail] = React.useState('');
+  const [password, setpassword] = React.useState('');
+  const [ConfirmPassword, setConfirmPassword] = React.useState('');
   const [checked, setChecked] = React.useState('first');
 
-
-
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => ({
-    isLoading: state.authReducers.isLoading
+  const {isLoading} = useSelector(state => ({
+    isLoading: state.authReducers.isLoading,
   }));
-  const onRegister = () =>
-    dispatch(actions.register({ name, email, password }));
-
-
+  const onRegister = () => dispatch(actions.register({name, email, password}));
 
   return (
-    <ImageBackground source={require('../image/background.png')}
-      style={{ flex: 1, backgroundColor: "#612C58", }}>
+    <ImageBackground
+      source={require('../image/background.png')}
+      style={{flex: 1, backgroundColor: '#612C58'}}>
       <>
-        <View style={{ flex: 1, marginHorizontal: 20 }}>
+        <View style={{flex: 1, marginHorizontal: 20}}>
           <SafeAreaView>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Image
                 source={require('../image/arrow.png')}
-                style={{ height: 18, width: 18, marginTop: 15, }}
+                style={{height: 18, width: 18, marginTop: 15}}
               />
             </TouchableOpacity>
 
-            
-              <View style={{ marginTop: 50 }}>
-                <Text style={{ fontSize: 26, color: "#FFFFFF", fontWeight: "bold" }}>Create an Account</Text>
-                <View style={{ flexDirection: "row", marginTop: 15 }}>
-                  <Text style={{ fontSize: 14, color: "#E8DEE6" }}>Have an account ? </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                    <Text style={{ fontSize: 14, color: "#F97762" }}> Login</Text>
-                  </TouchableOpacity>
-                </View>
-                <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 30, }}>Name</Text>
-                <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff", justifyContent: "center",marginTop:20 }}>
-                  <TextInput
-                    style={{ marginLeft: 10 }}
-
-                    onChangeText={(e) => setname(e)}
-                    value={name}
-                    placeholder=""
-                    keyboardType="name-phone-pad"
-                  />
-                </View>
-                <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 15,  }}>Email</Text>
-                <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff", justifyContent: "center",marginTop:20 }}>
-                  <TextInput
-                    style={{ marginLeft: 10 }}
-
-                    onChangeText={(e) => setemail(e)}
-                    value={email}
-                    placeholder=""
-                    keyboardType="name-phone-pad"
-                  />
-                </View>
-                <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 15, }}>Password</Text>
-                <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff", justifyContent: "center",marginTop:20 }}>
-                  <TextInput
-                    style={{ marginLeft: 10 }}
-
-                    onChangeText={(e) => setpassword(e)}
-                    value={password}
-                    placeholder=""
-                    secureTextEntry={true}
-                  />
-                </View>
-                <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 15,  }}>Confirm Password</Text>
-                <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff", justifyContent: "center" ,marginTop:20}}>
-                  <TextInput
-                    style={{ marginLeft: 10 }}
-
-                    onChangeText={(e) => setConfirmPassword(e)}
-                    value={ConfirmPassword}
-                    placeholder=""
-                    secureTextEntry={true}
-                  />
-                </View>
+            <View style={{marginTop: 50}}>
+              <Text
+                style={{fontSize: 26, color: '#FFFFFF', fontWeight: 'bold'}}>
+                Create an Account
+              </Text>
+              <View style={{flexDirection: 'row', marginTop: 15}}>
+                <Text style={{fontSize: 14, color: '#E8DEE6'}}>
+                  Have an account ?{' '}
+                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                  <Text style={{fontSize: 14, color: '#F97762'}}> Login</Text>
+                </TouchableOpacity>
               </View>
-              <View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 25, }}>
-                  <TouchableOpacity onPress={onRegister}
-
-                    style={{ backgroundColor: "#F97762", width: "100%", height: 48, borderRadius: 10, }}>
-
-                    <Text style={{ color: 'white', textAlign: "center", marginTop: 12 }}>Create My Account</Text>
-                  </TouchableOpacity>
-
-                </View>
+              <Text style={{fontSize: 14, color: '#E8DEE6', marginTop: 30}}>
+                Name
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                  marginTop: 20,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={e => setname(e)}
+                  value={name}
+                  placeholder=""
+                  keyboardType="name-phone-pad"
+                />
               </View>
-        
+              <Text style={{fontSize: 14, color: '#E8DEE6', marginTop: 15}}>
+                Email
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                  marginTop: 20,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={e => setemail(e)}
+                  value={email}
+                  placeholder=""
+                  keyboardType="name-phone-pad"
+                />
+              </View>
+              <Text style={{fontSize: 14, color: '#E8DEE6', marginTop: 15}}>
+                Password
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                  marginTop: 20,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={e => setpassword(e)}
+                  value={password}
+                  placeholder=""
+                  secureTextEntry={true}
+                />
+              </View>
+              <Text style={{fontSize: 14, color: '#E8DEE6', marginTop: 15}}>
+                Confirm Password
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                  marginTop: 20,
+                }}>
+                <TextInput
+                  style={{marginLeft: 10}}
+                  onChangeText={e => setConfirmPassword(e)}
+                  value={ConfirmPassword}
+                  placeholder=""
+                  secureTextEntry={true}
+                />
+              </View>
+            </View>
+            <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 25,
+                }}>
+                <TouchableOpacity
+                  onPress={onRegister}
+                  style={{
+                    backgroundColor: '#F97762',
+                    width: '100%',
+                    height: 48,
+                    borderRadius: 10,
+                  }}>
+                  <Text
+                    style={{
+                      color: 'white',
+                      textAlign: 'center',
+                      marginTop: 12,
+                    }}>
+                    Create My Account
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           </SafeAreaView>
         </View>
-
       </>
     </ImageBackground>
   );
-};
+}
 
 const styles = StyleSheet.create({
   checkboxContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 20,
   },
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, {useEffect, Component, useState} from 'react';
 // import {RadioButton, CheckBox} from 'react-native-paper';

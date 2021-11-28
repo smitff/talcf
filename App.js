@@ -1,8 +1,8 @@
-import React, { useEffect, } from 'react';
-import { TouchableOpacity, Image, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React, {useEffect} from 'react';
+import {TouchableOpacity, Image, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import 'react-native-gesture-handler';
 import Splash from './app/screen/Splash';
@@ -35,10 +35,9 @@ import Profile from './app/screen/Profile';
 import SelectDateTimes from './app/screen/SelectDateTimes';
 import Dashboard from './app/screen/Dashboard';
 import BottomNavi from './app/navigations/BottomNavi';
-import { navigationRef } from './app/navigations/navigationref';
+import {navigationRef} from './app/navigations/navigationref';
 
 import CustomWebView from './app/screen/CustomWebView';
-
 
 const Stack = createStackNavigator();
 
@@ -48,42 +47,41 @@ export default function App() {
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen
           name="Splash"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Splash}
         />
         <Stack.Screen
           name="Login"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Login}
         />
         <Stack.Screen
           name="Singup"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Singup}
         />
         <Stack.Screen
           name="Forgot Password"
-          options={{ headerShown: false, title: 'Forgot Password' }}
+          options={{headerShown: false, title: 'Forgot Password'}}
           component={ForgotPassword}
         />
         <Stack.Screen
           name="Reset Code"
-          options={{ headerShown: false, title: "Reset Code" }}
+          options={{headerShown: false, title: 'Reset Code'}}
           component={ResetCode}
-
         />
         <Stack.Screen
           name="Create Password"
-          options={{ headerShown: false, title: 'Create Password' }}
+          options={{headerShown: false, title: 'Create Password'}}
           component={CreatePassword}
         />
         <Stack.Screen
           name="AddNewAddress"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Add New Address',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -105,11 +103,11 @@ export default function App() {
         />
         <Stack.Screen
           name="ChangePassword"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Change Password',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -131,11 +129,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Notification"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Notification',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -157,11 +155,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Choose/Add Address"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Choose/Add Address',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -184,11 +182,11 @@ export default function App() {
 
         <Stack.Screen
           name="SessionsDetails"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Sessions Details',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -210,11 +208,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Checkout"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Checkout',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -236,11 +234,11 @@ export default function App() {
         />
         <Stack.Screen
           name="AddNewAddressSave"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Add New Address',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -262,11 +260,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Payment"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Payment',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -288,11 +286,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Payments"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Payments',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -314,31 +312,31 @@ export default function App() {
         />
         <Stack.Screen
           name="Tutorial1"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Tutorial1}
         />
         <Stack.Screen
           name="Tutorial2"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Tutorial2}
         />
         <Stack.Screen
           name="Tutorial3"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={Tutorial3}
         />
         <Stack.Screen
           name="CompleteYourProfile"
-          options={{ headerShown: false, title: 'Complete your Profile' }}
+          options={{headerShown: false, title: 'Complete your Profile'}}
           component={CompleteYourProfile}
         />
         <Stack.Screen
           name="Sessions"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Sessions',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -360,17 +358,19 @@ export default function App() {
         />
         <Stack.Screen
           name="Store"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             headerTitle: () => (
-              <Image style={{ width: 50, height: 50 }} source={require("./app/image/Group 4617.png")} />
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('./app/image/Group 4617.png')}
+              />
             ),
             title: 'Store',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
 
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
-            
-            
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
+
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -393,14 +393,13 @@ export default function App() {
         />
         <Stack.Screen
           name="ProductDetails"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Product Details',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
-            
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                   <Image
                     source={require('./app/image/left-arrow.png')}
@@ -413,7 +412,6 @@ export default function App() {
                     }}
                   />
                 </TouchableOpacity>
-            
               );
             },
           })}
@@ -421,16 +419,16 @@ export default function App() {
         />
         <Stack.Screen
           name="EditProfile"
-          options={{ headerShown: false, title: 'Edit Profile' }}
+          options={{headerShown: false, title: 'Edit Profile'}}
           component={EditProfile}
         />
         <Stack.Screen
           name="MyOrders"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'My Orders',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -452,11 +450,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Package"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Package',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -478,11 +476,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Cart"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Cart',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -504,11 +502,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Profile"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Profile',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -531,15 +529,14 @@ export default function App() {
 
         <Stack.Screen
           name="SelectDateTimes"
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             title: 'Select Date & Time',
             headerTintColor: '#000000',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+            headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
             headerLeft: () => {
               return (
-                <TouchableOpacity onPress={() => navigation.goBack()}
-                >
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                   <Image
                     source={require('./app/image/left-arrow.png')}
                     style={{
@@ -558,15 +555,14 @@ export default function App() {
         />
         <Stack.Screen
           name="BottomNavi"
-          options={{ headerShown: false ,}}
+          options={{headerShown: false}}
           component={BottomNavi}
         />
         <Stack.Screen
           name="CustomWebView"
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
           component={CustomWebView}
         />
-      
       </Stack.Navigator>
     </NavigationContainer>
   );

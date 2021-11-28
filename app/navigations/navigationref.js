@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommonActions, StackActions } from '@react-navigation/native';
+import {CommonActions, StackActions} from '@react-navigation/native';
 // NavigationConatiner is refered here - Check NavigationStack
 export const navigationRef = React.createRef();
 
@@ -19,10 +19,9 @@ function reset(value) {
     CommonActions.reset({
       index: 1,
       routes: [
-        { name: 'Login' },
-        { name: 'Singup' },
-        { name: 'ForgotPassword' },
-
+        {name: 'Login'},
+        {name: 'Singup'},
+        {name: 'ForgotPassword'},
 
         // {
         //   name: 'Profile',
@@ -43,16 +42,6 @@ export default {
   reset,
   push,
 };
-
-
-
-
-
-
-
-
-
-
 
 // import * as React from 'react';
 // import { CommonActions, StackActions } from '@react-navigation/native';
@@ -79,7 +68,6 @@ export default {
 //         { name: 'Singup' },
 //         { name: 'ForgotPassword' },
 //         {name:""}
-
 
 //         // {
 //         //   name: 'Profile',

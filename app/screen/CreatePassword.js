@@ -1,4 +1,4 @@
-import React, { useEffect, Component, useState } from 'react';
+import React, {useEffect, Component, useState} from 'react';
 
 import {
   StyleSheet,
@@ -7,77 +7,117 @@ import {
   TouchableOpacity,
   TextInput,
   ImageBackground,
-  Image
+  Image,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import * as actions from '../redux/action/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-export default function CreatePassword({ navigation }) {
-
+export default function CreatePassword({navigation}) {
   const [text, onChangeText] = React.useState(null);
   const [password, setPassword] = React.useState(null);
   const [cPassword, setCPassword] = React.useState(null);
   const [checked, setChecked] = React.useState('first');
 
-
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => ({
-    isLoading: state.authReducers.isLoading
+  const {isLoading} = useSelector(state => ({
+    isLoading: state.authReducers.isLoading,
   }));
 
-  const onComplete = (res) => {
-    console.log(res)
-  }
+  const onComplete = res => {
+    console.log(res);
+  };
   const onCreatePassword = () => {
     dispatch(actions.CreatePassword());
-  }
-
+  };
 
   return (
-    <ImageBackground source={require('../image/background.png')} style={{ flex: 1, justifyContent: 'center', backgroundColor: "#612C58" }}>
+    <ImageBackground
+      source={require('../image/background.png')}
+      style={{flex: 1, justifyContent: 'center', backgroundColor: '#612C58'}}>
       <>
-        <View style={{ flex: 1, marginHorizontal:20 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Image
-                source={require('../image/arrow.png')}
-                style={{height: 18, width: 18,marginTop:58, }}
-              />
-            </TouchableOpacity>
-          <View style={{ }}>
-            <View style={{ marginTop: 40, }}>
-              <Text style={{ fontSize: 26, color: "#FFFFFF", marginTop:15, fontWeight: "bold" }}>Create New Password</Text>
-              <Text style={{ fontSize: 12, color: "#FFFFFF", marginTop: 15, }}>Enter your new password</Text>
-              <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 30, }}>Password</Text>
-              <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff" ,justifyContent:"center",marginTop:15}}>
+        <View style={{flex: 1, marginHorizontal: 20}}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../image/arrow.png')}
+              style={{height: 18, width: 18, marginTop: 58}}
+            />
+          </TouchableOpacity>
+          <View style={{}}>
+            <View style={{marginTop: 40}}>
+              <Text
+                style={{
+                  fontSize: 26,
+                  color: '#FFFFFF',
+                  marginTop: 15,
+                  fontWeight: 'bold',
+                }}>
+                Create New Password
+              </Text>
+              <Text style={{fontSize: 12, color: '#FFFFFF', marginTop: 15}}>
+                Enter your new password
+              </Text>
+              <Text style={{fontSize: 14, color: '#E8DEE6', marginTop: 30}}>
+                Password
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                  marginTop: 15,
+                }}>
                 <TextInput
-                style={{marginLeft:10}}
-
+                  style={{marginLeft: 10}}
                   onChangeText={setPassword}
                   value={password}
                   placeholder=""
-                   secureTextEntry={true}
+                  secureTextEntry={true}
                 />
               </View>
-              <Text style={{ fontSize: 14, color: "#E8DEE6", marginTop: 15, marginBottom: 10 }}>Confirm Password</Text>
-              <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff",justifyContent:"center" }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#E8DEE6',
+                  marginTop: 15,
+                  marginBottom: 10,
+                }}>
+                Confirm Password
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  justifyContent: 'center',
+                }}>
                 <TextInput
-                style={{marginLeft:10}}
-
+                  style={{marginLeft: 10}}
                   onChangeText={setCPassword}
                   value={cPassword}
                   placeholder=""
-                   secureTextEntry={true}
+                  secureTextEntry={true}
                 />
               </View>
             </View>
-            
+
             <View>
-              <View style={{ flexDirection: "row", marginTop: 35 }}>
-                <View style={{ backgroundColor: "#F97762", width: "100%", height: 48, borderRadius: 10 ,justifyContent:"center",alignItems:'center'}}>
+              <View style={{flexDirection: 'row', marginTop: 35}}>
+                <View
+                  style={{
+                    backgroundColor: '#F97762',
+                    width: '100%',
+                    height: 48,
+                    borderRadius: 10,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
                   <TouchableOpacity onPress={onCreatePassword}>
-                    <Text style={{ color: 'white',}}>Create Password</Text>
+                    <Text style={{color: 'white'}}>Create Password</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -87,21 +127,13 @@ export default function CreatePassword({ navigation }) {
       </>
     </ImageBackground>
   );
-};
+}
 const styles = StyleSheet.create({
   checkboxContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 20,
   },
-
 });
-
-
-
-
-
-
-
 
 // import React, { useEffect, Component, useState } from 'react';
 
@@ -154,13 +186,13 @@ const styles = StyleSheet.create({
 //             </View>
 //             <View>
 //               <View style={{ flexDirection: "row", marginTop: 25 }}>
-                
-//                   <TouchableOpacity 
+
+//                   <TouchableOpacity
 //                   style={{ backgroundColor: "#F97762", width: 335, height: 48, borderRadius: 10 ,alignItems:"center",justifyContent:"center"}}
 //                   onPress={() => navigation.navigate('CompleteYourProfile')}>
 //                     <Text style={{ color: 'white',  }}>Create Password</Text>
 //                   </TouchableOpacity>
-              
+
 //               </View>
 //             </View>
 //           </View>
@@ -176,4 +208,3 @@ const styles = StyleSheet.create({
 //   },
 
 // });
-

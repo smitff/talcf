@@ -1,4 +1,4 @@
-import React, { useEffect, Component, useState } from 'react';
+import React, {useEffect, Component, useState} from 'react';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,17 +15,17 @@ import {
   ScrollView,
 } from 'react-native';
 import * as actions from '../redux/action/actions';
-import { useDispatch, useSelector } from 'react-redux';
-import { BASE_URL } from '../helper/Const';
+import {useDispatch, useSelector} from 'react-redux';
+import {BASE_URL} from '../helper/Const';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function ProductDetails({ route, navigation }) {
+export default function ProductDetails({route, navigation}) {
   const dispatch = useDispatch();
 
   const [paymentURL, setPaymentURL] = useState('');
 
-  const { storeId } = route.params;
-  console.log('>>>>>>>>>>> ', route.params)
+  const {storeId} = route.params;
+  console.log('>>>>>>>>>>> ', route.params);
 
   useEffect(() => {
     dispatch(
@@ -40,34 +40,43 @@ export default function ProductDetails({ route, navigation }) {
     storeDetailsLoading: state.dashboardReducer.storeDetailsLoading,
   }));
 
-  useEffect(async() => {
+  useEffect(async () => {
     console.log('storeDetails ', storeDetails);
     const userId = await AsyncStorage.getItem('user_id');
-    const url = await `http://ec2-3-144-21-115.us-east-2.compute.amazonaws.com/payment?user_id=${userId}&order_total=${storeDetails?.price}&payment_for=store&data={"cart":[{"product_id":${storeDetails?.id},"quantity":${storeDetails?.quantity}}]}`
-    setPaymentURL(url)
+    const url =
+      await `http://ec2-3-144-21-115.us-east-2.compute.amazonaws.com/payment?user_id=${userId}&order_total=${storeDetails?.price}&payment_for=store&data={"cart":[{"product_id":${storeDetails?.id},"quantity":${storeDetails?.quantity}}]}`;
+    setPaymentURL(url);
   }, [storeDetails]);
 
-  const getPaymentURL = async() => {
+  const getPaymentURL = async () => {
     const userId = await AsyncStorage.getItem('user_id');
-    const url = await `http://ec2-3-144-21-115.us-east-2.compute.amazonaws.com/payment?user_id=${userId}&order_total=${storeDetails?.price}&payment_for=store&data={"cart":[{"product_id":${storeDetails?.id},"quantity":${storeDetails?.quantity}}]}`
-    console.log("🚀 ~ file: ProductDetails.js ~ line 54 ~ getPaymentURL ~ url", url)
-    return url;  
-}
+    const url =
+      await `http://ec2-3-144-21-115.us-east-2.compute.amazonaws.com/payment?user_id=${userId}&order_total=${storeDetails?.price}&payment_for=store&data={"cart":[{"product_id":${storeDetails?.id},"quantity":${storeDetails?.quantity}}]}`;
+    console.log(
+      '🚀 ~ file: ProductDetails.js ~ line 54 ~ getPaymentURL ~ url',
+      url,
+    );
+    return url;
+  };
 
   return (
     <>
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         {storeDetailsLoading ? (
-          <Text style={{ alignSelf: 'center', marginTop: 20, fontSize: 24 }}>
+          <Text style={{alignSelf: 'center', marginTop: 20, fontSize: 24}}>
             Loading...
           </Text>
         ) : (
           <>
-
-            <View style={{ flex: 1, backgroundColor: '#f5f5f5', paddingHorizontal: 20 }}>
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: '#f5f5f5',
+                paddingHorizontal: 20,
+              }}>
               <View
                 style={{
-                  width: "100%",
+                  width: '100%',
                   height: 213,
                   backgroundColor: '#fff',
 
@@ -76,9 +85,9 @@ export default function ProductDetails({ route, navigation }) {
                 }}>
                 <Image
                   source={require('../image/products.png')}
-                  style={{ height: 213, width: 345 }}
-                // source={{uri: BASE_URL+storeDetails.image }}
-                // source={{uri: "http://talc.ubicoapps.in/storage/product/1626544992.jpg" }}
+                  style={{height: 213, width: 345}}
+                  // source={{uri: BASE_URL+storeDetails.image }}
+                  // source={{uri: "http://talc.ubicoapps.in/storage/product/1626544992.jpg" }}
                 />
               </View>
               <View style={{}}>
@@ -106,11 +115,11 @@ export default function ProductDetails({ route, navigation }) {
                 </Text>
                 <ScrollView
                   style={{
-                    width: "100%",
+                    width: '100%',
                     height: 185,
                     backgroundColor: '#FFFFFF',
                     borderRadius: 10,
-                    marginTop: 10
+                    marginTop: 10,
                   }}>
                   <Text
                     style={{
@@ -128,61 +137,67 @@ export default function ProductDetails({ route, navigation }) {
                     }}>
                     {storeDetails && storeDetails.description}
                   </Text>
-
                 </ScrollView>
               </View>
             </View>
 
             <View
-              style={{ flexDirection: "row", height: 100, width: "100%", backgroundColor: "#fff"
-              , position: 'absolute', bottom: 0 ,justifyContent:"center",alignItems:"center",}}>
-
-              <TouchableOpacity 
-               activeOpacity={1}
-               style={{
-                backgroundColor: '#F97762',
-                width: 165,
-                height: 48,
-                borderRadius: 10,
-                marginRight:10,
-                justifyContent:"center",
-                alignItems:"center",
-                marginBottom:10
-
-              }} onPress={() => navigation.navigate('Cart')}>
+              style={{
+                flexDirection: 'row',
+                height: 100,
+                width: '100%',
+                backgroundColor: '#fff',
+                position: 'absolute',
+                bottom: 0,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity
+                activeOpacity={1}
+                style={{
+                  backgroundColor: '#F97762',
+                  width: 165,
+                  height: 48,
+                  borderRadius: 10,
+                  marginRight: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: 10,
+                }}
+                onPress={() => navigation.navigate('Cart')}>
                 <Text
                   style={{
-                    color: 'white'
+                    color: 'white',
                   }}>
                   Add to cart
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-               activeOpacity={1}
+                activeOpacity={1}
                 style={{
                   backgroundColor: '#04A768',
                   width: 165,
                   height: 48,
                   borderRadius: 10,
-                  marginLeft:10,
-                  justifyContent:"center",
-                  alignItems:"center",
-                  marginBottom:10
+                  marginLeft: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: 10,
                 }}
-                onPress={() => navigation.navigate('Payments', {url: paymentURL, amount: storeDetails?.price})}>
+                onPress={() =>
+                  navigation.navigate('Payments', {
+                    url: paymentURL,
+                    amount: storeDetails?.price,
+                  })
+                }>
                 <Text
                   style={{
                     color: 'white',
-                    
-                  
                   }}>
                   Buy Now
                 </Text>
               </TouchableOpacity>
-
             </View>
-
-            
           </>
         )}
       </View>

@@ -20,14 +20,20 @@ export default function Tutorial1({navigation}) {
       source={require('../image/background.png')}
       style={{flex: 1, justifyContent: 'center', backgroundColor: '#612C58'}}>
       <>
-        <View style={{flex: 1, alignItems:'center', justifyContent:'center',paddingHorizontal:20}}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingHorizontal: 20,
+          }}>
           <Image
             source={require('../image/tutorial.png')}
             style={{
-              width: "100%",
+              width: '100%',
               height: 263,
               justifyContent: 'center',
-              alignSelf: 'center'
+              alignSelf: 'center',
             }}
           />
           <Text
@@ -50,8 +56,16 @@ export default function Tutorial1({navigation}) {
             typesetting industry. the industry’s standard{'\n'} dummy text ever
             since.
           </Text>
-          <View style={{flexDirection: 'row', justifyContent:"space-between", alignItems:"center", position:'absolute', bottom: 60, width:"100%", }}>
-            <View style={{flexDirection: 'row', }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              position: 'absolute',
+              bottom: 60,
+              width: '100%',
+            }}>
+            <View style={{flexDirection: 'row'}}>
               <Image
                 source={require('../image/live1.png')}
                 style={{width: 10, height: 10, marginLeft: 10}}
@@ -65,17 +79,18 @@ export default function Tutorial1({navigation}) {
                 style={{width: 10, height: 10, marginLeft: 10}}
               />
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('Tutorial2')}
-                style={{
-                  width: 80,
-                  height: 40,
-                  backgroundColor: '#F97762',
-                  justifyContent:'center',
-                  alignItems:'center',
-                  borderRadius: 10,
-                  // marginLeft:200
-                }}>
-                <Text style={{color:'white',}}>Next</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Tutorial2')}
+              style={{
+                width: 80,
+                height: 40,
+                backgroundColor: '#F97762',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 10,
+                // marginLeft:200
+              }}>
+              <Text style={{color: 'white'}}>Next</Text>
             </TouchableOpacity>
           </View>
         </View>

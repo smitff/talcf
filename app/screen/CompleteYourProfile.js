@@ -1,5 +1,5 @@
-import React, { useEffect, Component, useState } from 'react';
-import { RadioButton, CheckBox } from 'react-native-paper';
+import React, {useEffect, Component, useState} from 'react';
+import {RadioButton, CheckBox} from 'react-native-paper';
 
 import {
   StyleSheet,
@@ -11,49 +11,44 @@ import {
   Image,
   ScrollView,
   TouchableWithoutFeedback,
-
-  
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
-import { request, check, PERMISSIONS, RESULTS } from 'react-native-permissions';
-import { useDispatch, useSelector } from 'react-redux';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import {request, check, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actions from '../redux/action/actions';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import AntDesignIcon from "react-native-vector-icons/AntDesign"
-import moment from 'moment'
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import moment from 'moment';
 import ImagePicker from 'react-native-image-crop-picker';
 
-
-export default function CompleteYourProfile({ navigation }) {
-  const dispatch = useDispatch()
+export default function CompleteYourProfile({navigation}) {
+  const dispatch = useDispatch();
   const [imageSource, setImageSource] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  const [name, setName] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [email, setEmail] = useState('')
-  const [dob, setDOB] = useState('')
-  const [show, setShow] = React.useState("");
-  const [show1, setShow1] = React.useState("");
-  const [show2, setShow2] = React.useState("");
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [dob, setDOB] = useState('');
+  const [show, setShow] = React.useState('');
+  const [show1, setShow1] = React.useState('');
+  const [show2, setShow2] = React.useState('');
 
-  const [maleSelected, setMaleSelected] = useState(true)
+  const [maleSelected, setMaleSelected] = useState(true);
 
-  const { profileData } = useSelector((state) => ({
-    profileData: state.dashboardReducer.profileData
+  const {profileData} = useSelector(state => ({
+    profileData: state.dashboardReducer.profileData,
   }));
 
   useEffect(() => {
-    setName(profileData?.name)
-    setEmail(profileData?.email)
-    setMobile(profileData?.mobile)
-    setDOB(profileData?.dob)
-  }, [profileData])
-
-
+    setName(profileData?.name);
+    setEmail(profileData?.email);
+    setMobile(profileData?.mobile);
+    setDOB(profileData?.dob);
+  }, [profileData]);
 
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [date, setDate] = useState('MM/DD/YYYY');
@@ -73,8 +68,15 @@ export default function CompleteYourProfile({ navigation }) {
   // }));
 
   const onUpdateUser = () =>
-    dispatch(actions.updateuser({  name: name, mobile: mobile, dob: date, gender: "Male", profile: "Email" }));
-
+    dispatch(
+      actions.updateuser({
+        name: name,
+        mobile: mobile,
+        dob: date,
+        gender: 'Male',
+        profile: 'Email',
+      }),
+    );
 
   useEffect(async () => {
     const img = await AsyncStorage.getItem('profileImage');
@@ -113,11 +115,11 @@ export default function CompleteYourProfile({ navigation }) {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
-      cropping: true
+      cropping: true,
     }).then(image => {
-        setImageSource(image.path);
-        AsyncStorage.setItem('profileImage', image.path);
-        setShowPopup(false);
+      setImageSource(image.path);
+      AsyncStorage.setItem('profileImage', image.path);
+      setShowPopup(false);
     });
   };
 
@@ -170,7 +172,7 @@ export default function CompleteYourProfile({ navigation }) {
           }}>
           <Text>Open Camera</Text>
         </TouchableOpacity>
-        <View style={{ height: 1, width: '100%', backgroundColor: 'grey' }} />
+        <View style={{height: 1, width: '100%', backgroundColor: 'grey'}} />
         <TouchableOpacity
           onPress={openImageLibrary}
           style={{
@@ -195,67 +197,67 @@ export default function CompleteYourProfile({ navigation }) {
   //   }));
   // }
 
-
-  const nameValidate = (text) => {
-    setName(text)
-    console.log("eee", name)
+  const nameValidate = text => {
+    setName(text);
+    console.log('eee', name);
     let reg = /^[a-zA-Z\d]{2,12}$/i;
-    if (reg.test(name) === true)
-      setShow("");
-    else
-      setShow("Name  is not correct");
-  }
+    if (reg.test(name) === true) setShow('');
+    else setShow('Name  is not correct');
+  };
 
-  const mobileValidate = (text) => {
-    console.log("eee", mobile)
+  const mobileValidate = text => {
+    console.log('eee', mobile);
     // let reg = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
-    let reg = /^\d{10}$/
-    if (reg.test(mobile) === true)
-      setShow1("");
-    else
-      setShow1("Number  is not correct");
-  }
+    let reg = /^\d{10}$/;
+    if (reg.test(mobile) === true) setShow1('');
+    else setShow1('Number  is not correct');
+  };
 
   useEffect(() => {
     mobileValidate();
-  }, [mobile])
+  }, [mobile]);
 
-  const validateEmail = (text) => {
-    setEmail(text)
-    console.log("eee", email)
+  const validateEmail = text => {
+    setEmail(text);
+    console.log('eee', email);
     let reg = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w\w+)+$/;
-    if (reg.test(email) === true)
-      setShow2("");
-    else
-      setShow2("Email  is not correct");
+    if (reg.test(email) === true) setShow2('');
+    else setShow2('Email  is not correct');
+  };
 
-  }
-
-  const DOBValidate = (dob) => {
-    let reg = /^([0-2^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
-    if (reg.test(dob) === false)
-      return "Please Enter Valid DOB";
-    else
-      return
-  }
-
+  const DOBValidate = dob => {
+    let reg =
+      /^([0-2^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+    if (reg.test(dob) === false) return 'Please Enter Valid DOB';
+    else return;
+  };
 
   return (
     <ImageBackground
       source={require('../image/background.png')}
-      style={{ flex: 1, justifyContent: 'center', backgroundColor: '#612C58' }}>
-
+      style={{flex: 1, justifyContent: 'center', backgroundColor: '#612C58'}}>
       <ScrollView>
         {showPopup && showSelectionPopup()}
 
         <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 }}>
-
-          <View style={{ flexDirection: 'row', marginTop: 48, width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: 48,
+              width: '100%',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Image
                 source={require('../image/arrow.png')}
-                style={{ height: 18, width: 18 }}
+                style={{height: 18, width: 18}}
               />
             </TouchableOpacity>
 
@@ -264,7 +266,7 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 16,
                 color: '#FFFFFF',
                 fontWeight: 'bold',
-                marginLeft: 12
+                marginLeft: 12,
               }}>
               Complete Your Profile
             </Text>
@@ -290,10 +292,18 @@ export default function CompleteYourProfile({ navigation }) {
             </View>
           </View>
           <TouchableOpacity
-            style={{ width: 100, height: 100, borderRadius: 50, justifyContent: "center", alignItems: "center", backgroundColor: "white", marginTop: 25 }}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'white',
+              marginTop: 25,
+            }}
             onPress={() => setShowPopup(true)}>
             <Image
-              source={{ uri: imageSource }}
+              source={{uri: imageSource}}
               style={{
                 width: 100,
                 height: 100,
@@ -302,17 +312,16 @@ export default function CompleteYourProfile({ navigation }) {
               }}
             />
           </TouchableOpacity>
-          <View style={{ width: '100%' }}>
+          <View style={{width: '100%'}}>
             <Text
               style={{
                 fontSize: 14,
                 color: '#E8DEE6',
                 marginTop: 20,
-                
               }}>
               Name
             </Text>
-            
+
             <View
               style={{
                 width: '100%',
@@ -322,13 +331,11 @@ export default function CompleteYourProfile({ navigation }) {
                 justifyContent: 'center',
                 marginTop: 12,
               }}>
-                
               <TextInput
-              style={{marginLeft:5}}
-                onChangeText={(text) => nameValidate(text)}
+                style={{marginLeft: 5}}
+                onChangeText={text => nameValidate(text)}
                 value={name}
                 placeholder=""
-                
               />
             </View>
             <Text
@@ -336,11 +343,10 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 14,
                 color: '#E8DEE6',
                 // marginTop: 30,
-                
               }}>
               {show}
             </Text>
-            
+
             <Text
               style={{
                 fontSize: 14,
@@ -357,11 +363,11 @@ export default function CompleteYourProfile({ navigation }) {
                 borderRadius: 10,
                 backgroundColor: '#ffff',
                 justifyContent: 'center',
-                marginTop: 12
+                marginTop: 12,
               }}>
               <TextInput
-               style={{marginLeft:5}}
-                onChangeText={(text) => setMobile(text)}
+                style={{marginLeft: 5}}
+                onChangeText={text => setMobile(text)}
                 value={mobile}
                 placeholder=""
               />
@@ -371,7 +377,6 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 14,
                 color: '#E8DEE6',
                 // marginTop: 30,
-                
               }}>
               {show1}
             </Text>
@@ -380,7 +385,6 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 14,
                 color: '#E8DEE6',
                 marginTop: 12,
-
               }}>
               Email
             </Text>
@@ -391,11 +395,11 @@ export default function CompleteYourProfile({ navigation }) {
                 borderRadius: 10,
                 backgroundColor: '#ffff',
                 justifyContent: 'center',
-                marginTop: 12
+                marginTop: 12,
               }}>
               <TextInput
-                 style={{marginLeft:5}}
-                onChangeText={(text) => validateEmail(text)}
+                style={{marginLeft: 5}}
+                onChangeText={text => validateEmail(text)}
                 value={email}
                 placeholder=""
               />
@@ -405,7 +409,6 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 14,
                 color: '#E8DEE6',
                 // marginTop: 30,
-                
               }}>
               {show2}
             </Text>
@@ -414,13 +417,19 @@ export default function CompleteYourProfile({ navigation }) {
                 fontSize: 14,
                 color: '#E8DEE6',
                 marginTop: 12,
-
               }}>
               Date of birth
             </Text>
 
             <TouchableWithoutFeedback onPress={toggleDatePicker}>
-              <View style={{ width: "100%", height: 48, borderRadius: 10, backgroundColor: "#ffff", marginTop: 12 }}>
+              <View
+                style={{
+                  width: '100%',
+                  height: 48,
+                  borderRadius: 10,
+                  backgroundColor: '#ffff',
+                  marginTop: 12,
+                }}>
                 <View
                   style={[
                     {
@@ -430,12 +439,11 @@ export default function CompleteYourProfile({ navigation }) {
                       alignItems: 'center',
                       marginTop: 10,
                       // marginLeft: -20
-
                     },
                   ]}>
                   <TextInput
-                   style={{marginLeft:5}}
-                    onChangeText={(e) => setdob(e)}
+                    style={{marginLeft: 5}}
+                    onChangeText={e => setdob(e)}
                     value={dob}
                     placeholder=""
                   />
@@ -444,13 +452,12 @@ export default function CompleteYourProfile({ navigation }) {
                       fontSize: 15,
                       // fontFamily: 'Montserrat-SemiBold',
                       color: '#999999',
-
                     }}>
                     {date}
                   </Text>
                   <AntDesignIcon
                     name="calendar"
-                    style={{ position: "absolute", right: 5, }}
+                    style={{position: 'absolute', right: 5}}
                     size={20}
                     color="#999999"
                   />
@@ -480,7 +487,7 @@ export default function CompleteYourProfile({ navigation }) {
               fontSize: 14,
               color: '#E8DEE6',
               marginTop: 15,
-              width: '100%'
+              width: '100%',
             }}>
             Gender
           </Text>
@@ -498,11 +505,10 @@ export default function CompleteYourProfile({ navigation }) {
                 borderWidth: maleSelected ? 2 : 0.1,
                 borderColor: maleSelected ? '#F97762' : '#F5F5F5',
               }}>
-              <TouchableOpacity
-                onPress={() => setMaleSelected(true)}>
+              <TouchableOpacity onPress={() => setMaleSelected(true)}>
                 <Image
                   source={require('../image/male.png')}
-                  style={{ width: 92, height: 92, marginTop: 2, marginLeft: 2 }}
+                  style={{width: 92, height: 92, marginTop: 2, marginLeft: 2}}
                 />
               </TouchableOpacity>
             </View>
@@ -515,18 +521,29 @@ export default function CompleteYourProfile({ navigation }) {
                 borderColor: maleSelected ? '#F5F5F5' : '#F97762',
                 marginLeft: 20,
               }}>
-              <TouchableOpacity
-                onPress={() => setMaleSelected(false)}>
+              <TouchableOpacity onPress={() => setMaleSelected(false)}>
                 <Image
                   source={require('../image/female.png')}
-                  style={{ width: 92, height: 92, marginLeft: 2, marginTop: 2 }}
+                  style={{width: 92, height: 92, marginLeft: 2, marginTop: 2}}
                 />
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ flexDirection: 'row', marginTop: 10 }}>
-            <Text style={{ color: maleSelected ? '#F97762' : '#F5F5F5', marginRight: 40 }}>Male</Text>
-            <Text style={{ color: maleSelected ? '#F5F5F5' : '#F97762', marginLeft: 40 }}>Female</Text>
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <Text
+              style={{
+                color: maleSelected ? '#F97762' : '#F5F5F5',
+                marginRight: 40,
+              }}>
+              Male
+            </Text>
+            <Text
+              style={{
+                color: maleSelected ? '#F5F5F5' : '#F97762',
+                marginLeft: 40,
+              }}>
+              Female
+            </Text>
           </View>
 
           <View>
@@ -535,7 +552,6 @@ export default function CompleteYourProfile({ navigation }) {
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: 15,
-
               }}>
               <View
                 style={{
@@ -543,12 +559,10 @@ export default function CompleteYourProfile({ navigation }) {
                   width: '100%',
                   height: 48,
                   borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center"
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}>
-                <TouchableOpacity
-
-                  onPress={onUpdateUser}>
+                <TouchableOpacity onPress={onUpdateUser}>
                   <Text
                     style={{
                       color: 'white',
@@ -568,7 +582,6 @@ export default function CompleteYourProfile({ navigation }) {
         onCancel={toggleDatePicker}
         maximumDate={new Date()}
       />
-
     </ImageBackground>
   );
 }
@@ -579,15 +592,3 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-
-
-
-
-
-
-
-
-
-
-

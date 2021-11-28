@@ -36,199 +36,182 @@ import {
   CHANGE_PASSWORD_SUCCESS,
 } from './actionTypes';
 
-export const showLoading = (state) => {
+export const showLoading = state => {
   return {
     type: showLoading,
-    payload: state
+    payload: state,
   };
-}; 
+};
 
-export const hideLoading = (state) => {
+export const hideLoading = state => {
   return {
     type: hideLoading,
-    payload: state
+    payload: state,
   };
 };
 
-export const login = (state) => {
+export const login = state => {
   return {
     type: LOGIN,
-    payload: state
+    payload: state,
   };
 };
 
-export const register = (state) => ({
+export const register = state => ({
   type: REGISTER,
-  payload: state
+  payload: state,
 });
 
-
-export const forgotPassword = (state) => ({
+export const forgotPassword = state => ({
   type: FORGOT_PASSWORD,
-  payload: state
+  payload: state,
 });
 
-
-export const verifyOtp = (state) => ({
+export const verifyOtp = state => ({
   type: VERIFY_OTP,
-  payload: state
+  payload: state,
 });
 
-
-export const CreatePassword = (state) => ({
+export const CreatePassword = state => ({
   type: CREATE_PASSWORD,
-  payload: state
+  payload: state,
 });
 
-
-export const updateuser = (state) => ({
+export const updateuser = state => ({
   type: UPDATE_USER,
-  payload: state
+  payload: state,
 });
 
-
-
-export const dashboard = (state) => ({
+export const dashboard = state => ({
   type: DASHBOARD,
-  payload: state
+  payload: state,
 });
 
-export const dashboardresponse = (state) => ({
+export const dashboardresponse = state => ({
   type: DASHBOARD_RESPONSE,
-  payload: state
+  payload: state,
 });
 
-
-
-export const sessions = (state) => ({
+export const sessions = state => ({
   type: SESSIONS,
-  payload: state
+  payload: state,
 });
 
-export const sessionsresponse = (state) => ({
+export const sessionsresponse = state => ({
   type: SESSIONS_RESPONSE,
-  payload: state
+  payload: state,
 });
 
-
-export const sessiondetails = (state) => ({
+export const sessiondetails = state => ({
   type: SESSIONSDETAILS,
-  payload: state
+  payload: state,
 });
 
-export const sessiondetailsresponse = (state) => ({
+export const sessiondetailsresponse = state => ({
   type: SESSIONSDETAILS_RESPONSE,
-  payload: state
+  payload: state,
 });
 
-
-
-
-
-export const notification = (state) => ({
+export const notification = state => ({
   type: NOTIFICATION,
-  payload: state
+  payload: state,
 });
 
-export const notificationresponse = (state) => ({
+export const notificationresponse = state => ({
   type: NOTIFICATION_RESPONSE,
-  payload: state
+  payload: state,
 });
 
-
-
-export const checkIsUsers = (state) => ({
+export const checkIsUsers = state => ({
   type: IS_USERS,
-  payload: state
+  payload: state,
 });
 
-export const updateCache = (state) => ({
+export const updateCache = state => ({
   type: UPDATE_CACHE,
-  payload: state
+  payload: state,
 });
-export const loadingStatus = (state) => ({
+export const loadingStatus = state => ({
   type: LOADINNG,
-  payload: state
+  payload: state,
 });
 
-export const checkLogin = (state) => ({
+export const checkLogin = state => ({
   type: CHECK_LOGIN,
-  payload: state
+  payload: state,
 });
 
-export const sendOtpAction = (state) => ({
+export const sendOtpAction = state => ({
   type: SENT_OTP,
-  payload: state
+  payload: state,
 });
 
-export const resetPassword = (state) => ({
+export const resetPassword = state => ({
   type: RESET_PASSWORD,
-  payload: state
+  payload: state,
 });
 
-
-export const shipmentinfo = (state) => ({
+export const shipmentinfo = state => ({
   type: SHIPMENTINFO,
-  payload: state
+  payload: state,
 });
 
-export const fetchStoreList = (state) => ({
+export const fetchStoreList = state => ({
   type: FETCH_STORE_LIST,
-  payload: state
-})
+  payload: state,
+});
 
-export const fetchStoreDetails = (state) => ({
+export const fetchStoreDetails = state => ({
   type: FETCH_STORE_DETAILS,
-  payload: state
-})
+  payload: state,
+});
 
-export const fetchAddressList = (state) => ({
+export const fetchAddressList = state => ({
   type: FETCH_ADDRESS_LIST,
-  payload: state
-})
+  payload: state,
+});
 
-export const addNewAddress = (state) => ({
+export const addNewAddress = state => ({
   type: ADD_NEW_ADDRESS,
-  payload: state
-})
+  payload: state,
+});
 
-export const getOrder = (state) => ({
+export const getOrder = state => ({
   type: GET_ORDER,
-  payload: state
-})
+  payload: state,
+});
 
-export const getPlanList = (state) => ({
+export const getPlanList = state => ({
   type: PLAN_LIST,
-  payload: state
-})
+  payload: state,
+});
 
-export const getPlanDetails = (state) => ({
+export const getPlanDetails = state => ({
   type: PLAN_DETAILS,
-  payload: state
-})
+  payload: state,
+});
 
-
-export const getUserProfile = (state) => ({
+export const getUserProfile = state => ({
   type: PROFILE_DETAILS,
-  payload: state
-})
+  payload: state,
+});
 
-export const saveUserProfile = (state) => ({
+export const saveUserProfile = state => ({
   type: UPDATE_PROFILE_DETAILS,
-  payload: state
-})
+  payload: state,
+});
 
-export const getNotificationList = (state) => ({
+export const getNotificationList = state => ({
   type: NOTIFICATION_LIST,
-  payload: state
-})
+  payload: state,
+});
 
-export const removeNotification = (state) => ({
+export const removeNotification = state => ({
   type: REMOVE_NOTIFICATION,
-  payload: state
-})
+  payload: state,
+});
 
-export const changePassword = (state) =>({
+export const changePassword = state => ({
   type: CHANGE_PASSWORD,
-  payload: state
-})
+  payload: state,
+});
